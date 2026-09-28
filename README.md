@@ -26,10 +26,10 @@ python -m venv .venv
 source .venv/bin/activate
 
 # Install dependencies
-pip install langchain-openai langgraph gradio python-dotenv
+pip install langchain-ollama langgraph gradio
 
-# Set your OpenAI API key
-echo "OPENAI_API_KEY=sk-..." > .env
+# Make sure Ollama is running with the qwen3:14b model
+ollama pull qwen3:14b
 ```
 
 ## Usage
@@ -47,6 +47,6 @@ This launches a Gradio interface where you can:
 
 | Variable | Default | Description |
 |---|---|---|
-| `OPENAI_MODEL` | `gpt-5.6-luna` | Model used for generation and evaluation |
+| `MODEL` | `qwen3:14b` | Ollama model used for generation and evaluation |
 | `MAX_ATTEMPTS` | `3` | Maximum retry attempts |
 | `PASS_SCORE` | `8` | Minimum score to accept a query |

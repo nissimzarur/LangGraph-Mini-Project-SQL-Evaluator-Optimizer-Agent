@@ -1,20 +1,15 @@
-import os
-
-from dotenv import load_dotenv
-from langchain_openai import ChatOpenAI
+from langchain_ollama import ChatOllama
 from langgraph.graph import END, START, StateGraph
 
 from models import AgentState, Evaluation
 
 
-load_dotenv()
-
-MODEL = os.getenv("OPENAI_MODEL", "gpt-5.6-luna")
+MODEL = "qwen3:14b"
 
 MAX_ATTEMPTS = 3
 PASS_SCORE = 8
 
-llm = ChatOpenAI(model=MODEL)
+llm = ChatOllama(model=MODEL)
 evaluator_llm = llm.with_structured_output(Evaluation)
 
 
