@@ -1,10 +1,15 @@
+import os
+
+from dotenv import load_dotenv
 from langchain_ollama import ChatOllama
 from langgraph.graph import END, START, StateGraph
 
 from models import AgentState, Evaluation
 
 
-MODEL = "qwen3:14b"
+load_dotenv()
+
+MODEL = os.getenv("OLLAMA_MODEL", "qwen3:14b")
 
 MAX_ATTEMPTS = 3
 PASS_SCORE = 8

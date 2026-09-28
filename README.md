@@ -26,10 +26,13 @@ python -m venv .venv
 source .venv/bin/activate
 
 # Install dependencies
-pip install langchain-ollama langgraph gradio
+pip install langchain-ollama langgraph gradio python-dotenv
 
 # Make sure Ollama is running with the qwen3:14b model
 ollama pull qwen3:14b
+
+# Configure the model (optional — defaults to qwen3:14b)
+echo "OLLAMA_MODEL=qwen3:14b" > .env
 ```
 
 ## Usage
@@ -47,6 +50,6 @@ This launches a Gradio interface where you can:
 
 | Variable | Default | Description |
 |---|---|---|
-| `MODEL` | `qwen3:14b` | Ollama model used for generation and evaluation |
+| `OLLAMA_MODEL` | `qwen3:14b` | Ollama model used for generation and evaluation (via `.env`) |
 | `MAX_ATTEMPTS` | `3` | Maximum retry attempts |
 | `PASS_SCORE` | `8` | Minimum score to accept a query |
